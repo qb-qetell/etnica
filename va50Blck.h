@@ -1,30 +1,27 @@
-/*
-       hd11_BLCK
-*/
-
 #include <stdlib.h>
 
-struct hd11_BLCK {
-        char*                 strm;
-        int*                  vlmm;
-        int*                  cvrg;
-        struct hd11_BLCK* extnBlck;
+struct qbqetell_etnica_BLCK {
+        char* strm;
+        int*  vlmm;
+        int*  cvrg;
+        struct qbqetell_etnica_BLCK* extnBlck;
 };
-        void hd11_BLCK____intl (struct hd11_BLCK* sbjc, int* vlmm) {
+        int qbqetell_etnica_BLCK____intl (struct qbqetell_etnica_BLCK* sbjc, int* vlmm) {
                 if (sbjc == NULL) {
-                        sbjc = (struct hd11_BLCK*) calloc (1, sizeof (struct hd11_BLCK));
+                        sbjc = (struct qbqetell_etnica_BLCK*) calloc (1,
+                                sizeof (struct qbqetell_etnica_BLCK));
                 }
-                if ((*vlmm) < 1 || (*vlmm) > 1024) return;
+                if (vlmm == NULL || (*vlmm) < 1 || (*vlmm) > 1024) return 0;
                 
-                if ((*sbjc).strm     != NULL) {
+                if ((*sbjc).strm != NULL) {
                         free ((*sbjc).strm);
                         (*sbjc).strm = NULL;
                 }
-                if ((*sbjc).vlmm     != NULL) {
+                if ((*sbjc).vlmm != NULL) {
                         free ((*sbjc).vlmm);
                         (*sbjc).vlmm = NULL;
                 }
-                if ((*sbjc).cvrg     != NULL) {
+                if ((*sbjc).cvrg != NULL) {
                         free ((*sbjc).cvrg);
                         (*sbjc).cvrg = NULL;
                 }
@@ -35,9 +32,9 @@ struct hd11_BLCK {
                 (*sbjc).cvrg    = (int* ) calloc (1, sizeof (int));
                 (*(*sbjc).cvrg) = 0;
                 
-                return;
+                return 1;
         }
-        void hd11_BLCK____dntl (struct hd11_BLCK* sbjc) {
+        int qbqetell_etnica_BLCK____dntl (struct qbqetell_etnica_BLCK* sbjc) {
                 if ((*sbjc).strm     != NULL) {
                         free ((*sbjc).strm);
                         (*sbjc).strm = NULL;
@@ -51,4 +48,5 @@ struct hd11_BLCK {
                         (*sbjc).cvrg = NULL;
                 }
                 if ((*sbjc).extnBlck != NULL) (*sbjc).extnBlck = NULL;
+                return 1;
         }
